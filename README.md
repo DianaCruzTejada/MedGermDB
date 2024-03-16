@@ -5,10 +5,10 @@ This repository stores the information related to the publication [*MedGermDB: a
 
 # Contents
 The following materials are available in this repository:
-- data The three files that compound MedGermDB in csv format, and files using to build the shiny app.
-- doc manuscript and appendix.
-- results Output of the R scripts, including files needed to create and run the app.
-- src Scripts in R language used to clean data, and build the MedGermDB app data.
+- data: the three files that compound MedGermDB in csv format, and files using to build the shiny app.
+- doc: manuscript and appendix.
+- results: output of the R scripts, including files needed to create and run the app.
+- src: Scripts in R language used to clean data, and build the MedGermDB app data.
 
 # Citation
 Please cite MedGermDB as:
