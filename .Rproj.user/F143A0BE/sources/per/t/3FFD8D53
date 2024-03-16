@@ -1,0 +1,26 @@
+{
+    "id": "3FFD8D53",
+    "path": "~/GitHub REPOSITORIES/MedGermDB/shiny app/2. Visualized_app.R",
+    "project_path": "shiny app/2. Visualized_app.R",
+    "type": "r_source",
+    "hash": "3211855351",
+    "contents": "",
+    "dirty": false,
+    "created": 1710606041493.0,
+    "source_on_save": false,
+    "relative_order": 2,
+    "properties": {
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "61,0",
+        "scrollLine": "51"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1710607642,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1710607642765,
+    "read_only": false,
+    "read_only_alternatives": []
+}
