@@ -1,6 +1,6 @@
 #Visualization app
 library(maps); library(dplyr); library(ggplot2);library(data.table)
-load("results/appdata.RData")
+#load("results/appdata.RData")
 
 #Map
 mapplot <- function(coord_sf) {
