@@ -7,8 +7,17 @@
 #    http://shiny.rstudio.com/
 #
 
-library(shiny)
-library(tidyverse); library(maps); library(here)
+# load data for the app
+load("results/appdata.RData")
+coord_sf <- readRDS("data/coord_sf.rds")
+functions <- readRDS("results/functions.rds")
+
+mapplot <- functions$mapplot
+seedplot<- functions$seedplot
+references <- functions$references
+taxanomic <- functions$taxanomic
+habitat <- functions$habitat
+metanalize <- functions$metanalize
 
 #Create the species list 
 spp <- dat1 %>% select(accepted_binomial) %>% arrange(accepted_binomial) %>% pull(accepted_binomial) %>% unique %>% as.character
@@ -113,4 +122,5 @@ fluidRow(
  
 # Run the application 
 shinyApp(ui = ui, server = server)
+
 

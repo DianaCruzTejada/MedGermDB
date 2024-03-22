@@ -1,0 +1,26 @@
+{
+    "id": "05C0E794",
+    "path": "~/PhD UNIPI/REPOSITORIES GitHub 2024/MedGermDB_folder/MedGermDB/shiny app/1. Cleaning_app.R",
+    "project_path": "shiny app/1. Cleaning_app.R",
+    "type": "r_source",
+    "hash": "2135478875",
+    "contents": "",
+    "dirty": false,
+    "created": 1711103726792.0,
+    "source_on_save": false,
+    "relative_order": 2,
+    "properties": {
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "78,0",
+        "scrollLine": "3"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1711122197,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1711122197854,
+    "read_only": false,
+    "read_only_alternatives": []
+}
