@@ -8,22 +8,29 @@
 #
 
 # load data for the app
-load("results/appdata.RData")
-#coord_sf <- readRDS("data/coord_sf.rds")
-functions <- readRDS("results/functions.rds")
+# load("results/appdata.RData")
+# #coord_sf <- readRDS("data/coord_sf.rds")
+# functions <- readRDS("results/functions.rds")
+# 
+# mapplot <- functions$mapplot
+# seedplot<- functions$seedplot
+# references <- functions$references
+# taxanomic <- functions$taxanomic
+# habitat <- functions$habitat
+# metanalize <- functions$metanalize
 
-mapplot <- functions$mapplot
-seedplot<- functions$seedplot
-references <- functions$references
-taxanomic <- functions$taxanomic
-habitat <- functions$habitat
-metanalize <- functions$metanalize
+
+
+library(tidyverse); library(sf);library(sp);library(maps); library(here);library(dplyr); library(ggplot2);library(data.table)
+load(here("results", "appdata.RData"))
+source(here("shiny app", "2. Visualised_app.R"))
+coord_sf <- st_read("data/coord_sf.shp")
 
 #Create the species list 
-library(maps); library(dplyr); library(ggplot2);library(data.table)
 spp <- dat1 %>% select(accepted_binomial) %>% arrange(accepted_binomial) %>% pull(accepted_binomial) %>% unique %>% as.character
-coord_sf <- readRDS("data/coord_sf.rds")
 
+#coord_sf <- readRDS("data/coord_sf.rds")
+#load("results/appdata.RData")
 #Center title and logo
 tags$head(
   tags$style(
@@ -92,14 +99,15 @@ fluidRow(
  
  # Define server
  server <- function(input, output) {
-   
+   load("results/appdata.RData")
    coord_sf <- readRDS("data/coord_sf.rds")
+   #coord_sf <- st_read("data/coord_sf.shp")
    
    output$plot_map <- renderPlot({
      # filter by species
      x <- coord_sf %>%
-       filter(coord_sf$accepted_binomial == input$spp)%>%
-       pull()  # Convert to vector
+       filter(coord_sf$accepted_binomial == input$spp)
+       #pull()  # Convert to vector
           # draw the map for the species
      mapplot(coord_sf = x)
    })

@@ -4,6 +4,7 @@ library(rsconnect)
 
 
 #Load files for the app  ************#
+
 #Load MedGermDB Germination File
 dat1 <- read.csv("data/GerminationFile.csv")
 
@@ -75,5 +76,5 @@ rbind(germdf, rma.species)  %>%
          Experiment = paste(light, alternating, stratification, scarification, sep = ",\n"),
          Experiment = as.factor(Experiment)) -> Germination
 
-save(Germination, dat1, shapefile, world,coord_sf,dat1,taxa.file,habitat.file,
+save(Germination, dat1, shapefile, metanalize,coord_sf,world,dat1,taxa.file,habitat.file,
      file = here::here("results", "appdata.RData"))

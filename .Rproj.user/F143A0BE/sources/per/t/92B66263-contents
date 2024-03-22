@@ -1,9 +1,10 @@
 #Load packages 
-library(dplyr); library(sp); library(readr); library(tidyr)
-library(metafor); library(binom); library(data.table); 
-library(ggplot2); library(sf); library(data.table)
+library(dplyr); library(sp); library(readr); library(tidyr);library(metafor); library(binom); library(data.table); library(ggplot2); library(sf);
+library(rsconnect)
+
 
 #Load files for the app  ************#
+
 #Load MedGermDB Germination File
 dat1 <- read.csv("data/GerminationFile.csv")
 
@@ -14,8 +15,8 @@ taxa.file = read.csv("data/TaxaFile.csv",header = TRUE, sep = ";", quote = "\"",
 habitat.file = read.csv("data/HabitatFile.csv",header = TRUE, sep = ",", quote = "\"", stringsAsFactors = FALSE)
 
 # Load coordinates spacial data frame
-#coord_sf <- st_read("data/coord_sf.shp")
-coord_sf <- readRDS("data/coord_sf.rds")
+coord_sf <- st_read("data/coord_sf.shp")
+#coord_sf <- readRDS("data/coord_sf.rds")
 
 # Load Germination grouped data
 df <- fread("data/df.csv")
@@ -24,6 +25,7 @@ df <- fread("data/df.csv")
 shapefile <- st_read("data/Map files/MedBasin_21-07-23.shp")
 world  <- st_read("data/Map files/WorldRectMap.shp")
 
+
 ### A function to metanalize proportions:
 metanalize <- function(d) 
 {
@@ -31,6 +33,7 @@ metanalize <- function(d)
   p <- predict(m, transf = transf.ilogit, digits = 3)
   data.frame(mean = p$pred, lower = p$ci.lb, upper = p$ci.ub)
 }
+
 
 #### First we check for which groups the metanalysis works:
 listd <- split(df, by = "group", drop = TRUE)
@@ -73,5 +76,5 @@ rbind(germdf, rma.species)  %>%
          Experiment = paste(light, alternating, stratification, scarification, sep = ",\n"),
          Experiment = as.factor(Experiment)) -> Germination
 
-save(Germination, dat1, shapefile, world,coord_sf,dat1,taxa.file,habitat.file,
+save(Germination, dat1, shapefile, metanalize,coord_sf,world,dat1,taxa.file,habitat.file,
      file = here::here("results", "appdata.RData"))

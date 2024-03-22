@@ -1,8 +1,10 @@
 #Visualization app
 library(maps); library(dplyr); library(ggplot2);library(data.table)
-#load("results/appdata.RData")
+
+load("results/appdata.RData")
 
 #Map
+coord_sf <- readRDS("data/coord_sf.rds")
 mapplot <- function(coord_sf) {
 ggplot() +
   geom_sf(data = world, fill = "gainsboro", color = "darkgray") +
@@ -59,4 +61,11 @@ habitat <- function(habitat.file, sp = "Achillea maritima") {
     select(species_type,Habitat_level.1, Habitat_level.3) %>%
     as_tibble
 }
+functions <- list(mapplot = mapplot,
+                  seedplot = seedplot,
+                  references = references,
+                  taxanomic = taxanomic,
+                  habitat = habitat,
+                  metanalize = metanalize)
 
+saveRDS(functions, file = "results/functions.rds")
