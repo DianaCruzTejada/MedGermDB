@@ -20,7 +20,9 @@ habitat <- functions$habitat
 metanalize <- functions$metanalize
 
 #Create the species list 
+library(maps); library(dplyr); library(ggplot2);library(data.table)
 spp <- dat1 %>% select(accepted_binomial) %>% arrange(accepted_binomial) %>% pull(accepted_binomial) %>% unique %>% as.character
+coord_sf <- readRDS("data/coord_sf.rds")
 
 #Center title and logo
 tags$head(
@@ -90,11 +92,13 @@ fluidRow(
  
  # Define server
  server <- function(input, output) {
+   coord_sf <- readRDS("data/coord_sf.rds")
    
    output$plot_map <- renderPlot({
      # filter by species
      x <- coord_sf %>%
-       filter(coord_sf$accepted_binomial == input$spp)
+       filter(coord_sf$accepted_binomial == input$spp)%>%
+       pull()  # Convert to vector
           # draw the map for the species
      mapplot(coord_sf = x)
    })
