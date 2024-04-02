@@ -12,3 +12,4 @@ The following materials are available in this repository:
 
 # Citation
 Please cite MedGermDB as:
+Cruz‐Tejada, D.M., Fernández‐Pascual, E., Mo, A., Mattana, E. & Carta, A. (2024) MedGermDB: A seed germination database for characteristic species of Mediterranean habitats. Applied Vegetation Science, 27, e12771.
