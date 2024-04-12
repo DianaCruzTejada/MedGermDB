@@ -4,6 +4,7 @@ library(rsconnect)
 
 
 #Load files for the app  ************#
+
 #Load MedGermDB Germination File
 dat1 <- read.csv("data/GerminationFile.csv")
 
@@ -14,7 +15,7 @@ taxa.file = read.csv("data/TaxaFile.csv",header = TRUE, sep = ";", quote = "\"",
 habitat.file = read.csv("data/HabitatFile.csv",header = TRUE, sep = ",", quote = "\"", stringsAsFactors = FALSE)
 
 # Load coordinates spacial data frame
-#coord_sf <- st_read("data/coord_sf.shp")
+coord_sf <- st_read("data/coord_sf.shp")
 #coord_sf <- readRDS("data/coord_sf.rds")
 
 # Load Germination grouped data
@@ -23,6 +24,7 @@ df <- fread("data/df.csv")
 # Load map files
 shapefile <- st_read("data/Map files/MedBasin_21-07-23.shp")
 world  <- st_read("data/Map files/WorldRectMap.shp")
+
 
 ### A function to metanalize proportions:
 metanalize <- function(d) 
@@ -74,5 +76,5 @@ rbind(germdf, rma.species)  %>%
          Experiment = paste(light, alternating, stratification, scarification, sep = ",\n"),
          Experiment = as.factor(Experiment)) -> Germination
 
-save(Germination, dat1, shapefile, world,coord_sf,dat1,taxa.file,habitat.file,
+save(Germination, dat1, shapefile, metanalize,coord_sf,world,dat1,taxa.file,habitat.file,
      file = here::here("results", "appdata.RData"))

@@ -11,7 +11,7 @@ ggplot() +
   geom_sf(data = shapefile, fill = rgb(0, 1, 0, alpha = 0.1), color ="darkgray")+
   geom_sf(data = coord_sf, color = "black", size = 3, alpha = 0.8)+
   labs(title = "Origin of the germination records.", 
-       subtitle = "The golden circles are the coordinates of the seed lots used in the experiments")+
+       subtitle = "The black circles are the coordinates of the seed lots used in the experiments")+
   theme_minimal() +  # Use theme_minimal as a base theme
   theme(axis.line=element_blank(), axis.text.x=element_blank(),
         axis.text.y=element_blank(), axis.ticks=element_blank(),
